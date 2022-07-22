@@ -4,6 +4,6 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="LegitHealth\DapiBundle\MediaAnalyzer" public="true" />
+        <service id="LegitHealth\DapiBundle\MediaAnalyzer"/>
     </services>
 </container>
