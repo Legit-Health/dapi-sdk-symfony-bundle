@@ -1,0 +1,22 @@
+{
+    "name": "legit-health/dapi-sdk-symfony-bundle",
+    "description": "Bundles that integrates the SDK for working with the Legit.Health's Dermatology API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "LegitHealth\\DapiBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gerardo",
+            "email": "gerardo@legit.health"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "legit-health/dapi-sdk-php": "1.0.2-beta",
+        "symfony/framework-bundle": "6.1.*"
+    }
+}
