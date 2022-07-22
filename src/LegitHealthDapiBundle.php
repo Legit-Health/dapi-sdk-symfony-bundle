@@ -13,7 +13,7 @@ class LegitHealthDapiBundle extends AbstractBundle
     {
         $definition->rootNode()
             ->children()
-            ->integerNode('api_key')->end()
+            ->scalarNode('api_key')->end()
             ->scalarNode('api_url')->end()
             ->end()
             ->end();
