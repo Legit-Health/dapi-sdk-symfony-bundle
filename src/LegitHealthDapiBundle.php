@@ -24,7 +24,7 @@ class LegitHealthDapiBundle extends AbstractBundle
         $container->import('../config/services.xml');
 
         $container->services()
-            ->get('legit_health.dapi.media_analyzer')
+            ->get('LegitHealth\DapiBundle\MediaAnalyzer')
             ->arg(0, $config['api_url'])
             ->arg(1, $config['api_key']);
     }
