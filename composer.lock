@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06a0f4672ba986a09e0f1cc8fafd5e1b",
+    "content-hash": "7135cd6c8660ea2873e2ebf10b108421",
     "packages": [
         {
             "name": "legit-health/dapi-sdk-php",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Legit-Health/dapi-sdk-php.git",
-                "reference": "c7b1e1aea2f11b21f5cc719ed48caec72e754154"
+                "reference": "ac1194c864eecca1c7748e70bd3bb99bc59355f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Legit-Health/dapi-sdk-php/zipball/c7b1e1aea2f11b21f5cc719ed48caec72e754154",
-                "reference": "c7b1e1aea2f11b21f5cc719ed48caec72e754154",
+                "url": "https://api.github.com/repos/Legit-Health/dapi-sdk-php/zipball/ac1194c864eecca1c7748e70bd3bb99bc59355f6",
+                "reference": "ac1194c864eecca1c7748e70bd3bb99bc59355f6",
                 "shasum": ""
             },
             "require": {
@@ -54,9 +54,9 @@
             "description": "SDK for integrate with the Dermatology API",
             "support": {
                 "issues": "https://github.com/Legit-Health/dapi-sdk-php/issues",
-                "source": "https://github.com/Legit-Health/dapi-sdk-php/tree/0.3.0"
+                "source": "https://github.com/Legit-Health/dapi-sdk-php/tree/0.3.1"
             },
-            "time": "2022-08-18T11:41:43+00:00"
+            "time": "2022-08-18T15:24:19+00:00"
         },
         {
             "name": "psr/cache",
