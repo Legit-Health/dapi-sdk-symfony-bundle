@@ -19,13 +19,22 @@ class LegitHealthDapiBundle extends AbstractBundle
             ->end();
     }
 
-    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+    public function loadExtension(array $config, ContainerConfigurator $containerConfigurator, ContainerBuilder $builder): void
     {
-        $container->import('../config/services.xml');
+        $containerConfigurator->import('../config/services.xml');
 
-        $container->services()
-            ->get('LegitHealth\DapiBundle\MediaAnalyzer')
-            ->arg(0, $config['api_url'])
-            ->arg(1, $config['api_key']);
+        $apiUrl = $config['api_url'];
+        $apiKey = $config['api_key'];
+
+        $containerConfigurator->extension('framework', [
+            'http_client' => ['scoped_clients' => [
+                'dapi.http.client' => [
+                    'base_uri' => $apiUrl,
+                    'headers' => [
+                        'x-api-key' => $apiKey
+                    ]
+                ]
+            ]],
+        ]);
     }
 }
