@@ -2,7 +2,6 @@
 
 namespace LegitHealth\DapiBundle;
 
-use LegitHealth\Dapi\AiClient;
 use LegitHealth\Dapi\MediaAnalyzer as DapiMediaAnalyzer;
 use LegitHealth\Dapi\MediaAnalyzerArguments\FollowUpArguments;
 use LegitHealth\Dapi\MediaAnalyzerArguments\PredictArguments;
@@ -15,8 +14,7 @@ class MediaAnalyzer
 
     public function __construct(private HttpClientInterface $dapiHttpClient)
     {
-        $aiClient = new AiClient($dapiHttpClient);
-        $this->dapiMediaAnalyzer = new DapiMediaAnalyzer($aiClient);
+        $this->dapiMediaAnalyzer = DapiMediaAnalyzer::createWithHttpClient($dapiHttpClient);
     }
 
     public function predict(PredictArguments $arguments): MediaAnalyzerResponse

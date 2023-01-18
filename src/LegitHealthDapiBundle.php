@@ -5,6 +5,8 @@ namespace LegitHealth\DapiBundle;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class LegitHealthDapiBundle extends AbstractBundle
@@ -19,22 +21,22 @@ class LegitHealthDapiBundle extends AbstractBundle
             ->end();
     }
 
-    public function loadExtension(array $config, ContainerConfigurator $containerConfigurator, ContainerBuilder $builder): void
+    public function build(ContainerBuilder $containerBuilder)
+    {
+        parent::build($containerBuilder);
+    }
+
+    public function loadExtension(array $config, ContainerConfigurator $containerConfigurator, ContainerBuilder $containerBuilder): void
     {
         $containerConfigurator->import('../config/services.xml');
 
-        $apiUrl = $config['api_url'];
-        $apiKey = $config['api_key'];
+        $containerConfigurator->services()->set('dapi.http.client', HttpClient::class)
+            ->factory([HttpClientFactory::class, 'withConfig'])
+            ->args([$config['api_url'], $config['api_key']])
+            ->tag('http_client.client');
 
-        $containerConfigurator->extension('framework', [
-            'http_client' => ['scoped_clients' => [
-                'dapi.http.client' => [
-                    'base_uri' => $apiUrl,
-                    'headers' => [
-                        'x-api-key' => $apiKey
-                    ]
-                ]
-            ]],
-        ]);
+        $containerConfigurator->services()
+            ->get('LegitHealth\DapiBundle\MediaAnalyzer')
+            ->arg(0, new Reference('dapi.http.client'));
     }
 }
