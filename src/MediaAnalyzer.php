@@ -17,6 +17,9 @@ class MediaAnalyzer
         $this->dapiMediaAnalyzer = DapiMediaAnalyzer::createWithHttpClient($dapiHttpClient);
     }
 
+    /**
+     * @deprecated 6.0
+     */
     public function predict(MediaAnalyzerArguments $arguments): MediaAnalyzerResponse
     {
         return $this->dapiMediaAnalyzer->predict($arguments);
