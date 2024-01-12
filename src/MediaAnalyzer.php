@@ -3,9 +3,14 @@
 namespace LegitHealth\DapiBundle;
 
 use LegitHealth\Dapi\MediaAnalyzer as DapiMediaAnalyzer;
-use LegitHealth\Dapi\MediaAnalyzerArguments\MediaAnalyzerArguments;
-use LegitHealth\Dapi\MediaAnalyzerResponse\DiagnosisSupportResponse;
-use LegitHealth\Dapi\MediaAnalyzerResponse\MediaAnalyzerResponse;
+use LegitHealth\Dapi\MediaAnalyzerArguments\{
+    DiagnosisSupportArguments,
+    SeverityAssessmentArguments
+};
+use LegitHealth\Dapi\MediaAnalyzerResponse\{
+    DiagnosisSupportResponse,
+    SeverityAssessmentResponse
+};
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MediaAnalyzer
@@ -17,21 +22,13 @@ class MediaAnalyzer
         $this->dapiMediaAnalyzer = DapiMediaAnalyzer::createWithHttpClient($dapiHttpClient);
     }
 
-    /**
-     * @deprecated 6.0
-     */
-    public function predict(MediaAnalyzerArguments $arguments): MediaAnalyzerResponse
-    {
-        return $this->dapiMediaAnalyzer->predict($arguments);
-    }
-
-    public function diagnosisSupport(MediaAnalyzerArguments $arguments): DiagnosisSupportResponse
+    public function diagnosisSupport(DiagnosisSupportArguments $arguments): DiagnosisSupportResponse
     {
         return $this->dapiMediaAnalyzer->diagnosisSupport($arguments);
     }
 
-    public function followUp(MediaAnalyzerArguments $arguments): MediaAnalyzerResponse
+    public function severityAssessment(SeverityAssessmentArguments $arguments): SeverityAssessmentResponse
     {
-        return $this->dapiMediaAnalyzer->followUp($arguments);
+        return $this->dapiMediaAnalyzer->severityAssessment($arguments);
     }
 }
