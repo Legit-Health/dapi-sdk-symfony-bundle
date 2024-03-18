@@ -5,10 +5,12 @@ namespace LegitHealth\DapiBundle;
 use LegitHealth\Dapi\MediaAnalyzer as DapiMediaAnalyzer;
 use LegitHealth\Dapi\MediaAnalyzerArguments\{
     DiagnosisSupportArguments,
+    PredictArguments,
     SeverityAssessmentArguments
 };
 use LegitHealth\Dapi\MediaAnalyzerResponse\{
     DiagnosisSupportResponse,
+    PredictResponse,
     SeverityAssessmentResponse
 };
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -30,5 +32,13 @@ class MediaAnalyzer
     public function severityAssessment(SeverityAssessmentArguments $arguments): SeverityAssessmentResponse
     {
         return $this->dapiMediaAnalyzer->severityAssessment($arguments);
+    }
+
+    /**
+     * @deprecated
+     */
+    public function predict(PredictArguments $arguments): PredictResponse
+    {
+        return $this->dapiMediaAnalyzer->predict($arguments);
     }
 }
