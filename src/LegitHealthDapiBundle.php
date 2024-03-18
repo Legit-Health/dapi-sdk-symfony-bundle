@@ -21,7 +21,7 @@ class LegitHealthDapiBundle extends AbstractBundle
             ->end();
     }
 
-    public function build(ContainerBuilder $containerBuilder)
+    public function build(ContainerBuilder $containerBuilder): void
     {
         parent::build($containerBuilder);
     }
