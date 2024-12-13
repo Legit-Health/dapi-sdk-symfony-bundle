@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "symfony/framework-bundle": "^6.1",
-        "legit-health/dapi-sdk-php": "^9.0"
+        "symfony/framework-bundle": "^7.2",
+        "legit-health/dapi-sdk-php": "^10.0"
     }
 }
